@@ -1,8 +1,10 @@
 # Overview
 
-We adopt key-value pair list structure to store the metadata information of a data set. A list object in R, a YAML file or a JSON file works for this purpose. The basic structure consists of multiple data sets at the first level. Within each data set, we set fields for `FOM`, `OBS`, `VAR` and etc. Then we got all the FOMs in each data set embedded in the `FOM` field of each data set and so on so forth. Finally, under the element for each matrix, the fields to describe the metadata will be listed.. These fields are descibed in detail in the [Specifications](https://github.com/mvfki/mams/blob/main/specification.md). 
+We adopt key-value pair list structure to store the metadata information of a data set. A list object in R/Python, a YAML file, or a JSON file can store the MAMS information in this structure thus making it relatively platform agnostic. The top level of the list corresponds to the dataset denoted by `dataset_id`. Within each dataset, have elements for `FOM`, `OBS`, `FEA`, `OID`, `FID`, and `REC`. Each FOM will be an entry in the `FOM` element, each OBS will be an entry in the `OBS` section , etc. Finally, the individual MAMS fields will be listed in the element for each matrix. These fields are descibed in detail in the [Specifications](https://github.com/single-cell-mams/mams/blob/main/specification.md). 
 
-# Extra fields
+# Implementation specific fields
+
+We include a few extra fields under each matrix that are not in the MAMS specification. These fields denote the location of the file containing the matrix, describe how to retrieve it from the file or data object, and capture the releationship between FOMs, OBSs, and FEAs. 
 
 ## General fields
 
@@ -29,9 +31,9 @@ These fields are used to link the FOM to its corresponding ID and annotation obj
 **Value:** Character string or list  
 **Description:** `id`(s) of `OBS` object(s) that contain annotations for the observation in this FOM.
 
-**Field:** var  
+**Field:** fea  
 **Value:** Character string or list  
-**Description:** `id`(s) of `VAR` object(s) that contain annotations for the features in this FOM.
+**Description:** `id`(s) of `FEA` object(s) that contain annotations for the features in this FOM.
 
 
 # Example
@@ -39,16 +41,16 @@ These fields are used to link the FOM to its corresponding ID and annotation obj
 Here we take an example of a YAML file to how the list is structured and how elements match to the specifications. Comments on the right of some lines match to the explanation following this example. 
 
 ```{YAML}
-pbmc8k:                     # [1]
-  FOM:                      # [2]
-    fom1:                   # [3]
+pbmc8k:                    
+  FOM:                     
+    fom1:                  
       filepath: pbmc8k_seurat_raw.rds
       accessor: GetAssayData(object = pbmc8k_seurat_raw, slot = "counts", assay =
         "RNA")
       oid: oid1
       fid: fid1
       obs: obs1
-      var: var1
+      fea: fea1
       data_type: int
       representation: sparse
       obs_unit: cell
@@ -58,8 +60,8 @@ pbmc8k:                     # [1]
       analyte: rna
       obs_subset: full
       record_id: CellRanger.count
-  OID:                      # [2]
-    oid1:                   # [3]
+  OID:                     
+    oid1:                  
       filepath: pbmc8k_seurat_raw.rds
       accessor: '`colnames(pbmc8k_seurat_raw)`'
     oid2:
@@ -79,12 +81,12 @@ pbmc8k:                     # [1]
     obs2:
       filepath: pbmc8k_seurat_nonempty.rds
       accessor: '`pbmc8k_seurat_nonempty[[]]`'
-  VAR:
-    var1:
+  FEA:
+    fea:
       filepath: pbmc8k_seurat_raw.rds
       accessor: '`pbmc8k_seurat_raw[["RNA"]][[]]`'
       feature_modality: rna
-    var2:
+    fea2:
       filepath: pbmc8k_seurat_raw.rds
       accessor: '`pbmc8k_seurat_raw[["ADT"]][[]]`'
       feature_modality: protein
