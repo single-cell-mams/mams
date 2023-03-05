@@ -35,6 +35,9 @@ In order to facilitate sharing and interoperability across consortiums and techn
 | record_function_name | Name of the function or mathematical operation used to produce the matrix, annotation, or graph. | REC |
 | record_function_parameters | Key/value pairs describing the primary parameters and their values used in the function call. | REC |
 | record_workflow_link | Public link to workflow that ran the tool. | REC |
+| record_runtime_start | The start time of the algorithm or operation. | REC |
+| record_runtime_end | The finishing time of the algorithm or operation. | REC |
+| record_runtime_duration | The total duration of the algorithm or operation. | REC |
 
 
 # General fields
