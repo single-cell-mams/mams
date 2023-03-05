@@ -6,7 +6,7 @@ We adopt key-value pair list structure to store the metadata information of a da
 
 We include a few extra fields under each matrix that are not in the MAMS specification. These fields denote the location of the file containing the matrix, describe how to retrieve it from the file or data object, and capture the releationship between FOMs, OBSs, and FEAs. 
 
-## General fields
+## Matrix location fields
 
 **Field:** filepath  
 **Value:** Character string  
@@ -16,7 +16,7 @@ We include a few extra fields under each matrix that are not in the MAMS specifi
 **Value:** Character string  
 **Description:** The command to access the the matrix, array, or data frame from the data object stored in `filepath`.
 
-## FOM inking fields
+## Linking fields
 These fields are used to link the FOM to its corresponding ID and annotation objects. 
 
 **Field:** oid  
