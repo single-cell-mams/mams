@@ -1,0 +1,2 @@
+"0","data.nonempty[[""percent.mt""]] <- PercentageFeatureSet(data.nonempty, pattern = ""^MT-"")"
+"0","data <- subset(data.nonempty, subset = nFeature_RNA > 200 & percent.mt < 5)"

@@ -1,0 +1,28 @@
+{
+    "id": "303395E3",
+    "path": "~/Desktop/mams/Pilot/pbmc1k_rna_adt/analysis/seurat/seurat_multimodal.Rmd",
+    "project_path": "seurat_multimodal.Rmd",
+    "type": "r_markdown",
+    "hash": "3560431683",
+    "contents": "",
+    "dirty": false,
+    "created": 1658246371851.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "116,49",
+        "scrollLine": "111"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1679589359,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1679589359436,
+    "read_only": false,
+    "read_only_alternatives": []
+}
